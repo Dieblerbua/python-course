@@ -1,4 +1,6 @@
-while True:
+repeat = True
+
+while repeat:
 
     baselineinput = input("How large shall the pyramids base be, my lord? ")
     print("Very well, " + baselineinput + " it shall be:")
@@ -19,8 +21,7 @@ while True:
 
     if happy == "Very much so":
        print("Very well, I shall retire to my chambers then.")
-       break
+       repeat = False
     else:
       print("Very well, we shall rebuild it then.")
       print("")
-      continue
