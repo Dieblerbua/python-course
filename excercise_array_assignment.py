@@ -14,5 +14,3 @@ array2 = [["My", "name", "is", "Elias"], ["I", "am", "still", "alive"]]
 
 
 # Print the sentences and let the user choose which word it wants to change and then change it. 
-
-#
