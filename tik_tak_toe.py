@@ -9,10 +9,16 @@ player1 = input("Player 1, please state your name: ")
 player2 = input("Player 2, how may I call you? ")
 gameboard = [[" "," "," "],[" "," "," "],[" "," "," "]]
 
-for line in gameboard:
-    for position in line:
-        print(position, end = "")
+def table():
+    print("----------")
+    for line in gameboard:
+        print("|", end = "")
+        for position in line:
+            print(position, "|", end = "")
+        print("")
+        print("----------")
     print("")
+
 
 turnOf1 = True
 row1correct = False
@@ -21,6 +27,8 @@ turnOf2 = False
 row2correct = False
 colum2correct = False
 repeat = True
+
+table()
 while repeat:
     
     #Turn of Player 1
@@ -58,24 +66,19 @@ while repeat:
                 print("Sorry, this field is already occupied. Choose a different one!")
                 turnOf1 = True
 
-            #reprint gameboard
-            print("")
-            for line in gameboard:
-                for position in line:
-                    print(position, end = "")
-                print("")
-            turnOf2 = True
+            table()
 
             #Win conditions
             for line in gameboard:
                 if line == ["X", "X", "X"]:
-                    repeat = False
                     turnOf2 = False
+                    repeat = False
                     print("Well done, " + player1 + ". You have won the game!")
+                else:
+                    turnOf2 = True
             row1correct = False
             colum1correct = False
             turnOf1 = False
-
 
     #turn of Player 2
     while turnOf2:
@@ -113,13 +116,7 @@ while repeat:
                 print("Sorry, this field is already occupied. Choose a different one!")
                 turnOf2 = True
 
-            #reprint gameboard
-            print("")
-            for line in gameboard:
-                for position in line:
-                    print(position, end = "")
-                print("")
-            turnOf1 = True
+            table()
 
             #Win conditions
             for line in gameboard:
@@ -127,6 +124,8 @@ while repeat:
                     repeat = False
                     turnOf1 = False
                     print("Well done, " + player2 + ". You have won the game!")
+                else:
+                    turnOf1 = True
             row2correct = False
             colum2correct = False
             turnOf2 = False
