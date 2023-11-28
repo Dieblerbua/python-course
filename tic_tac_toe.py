@@ -22,10 +22,10 @@ def table():
 
 turnOf1 = True
 row1correct = False
-colum1correct = False
+column1correct = False
 turnOf2 = False
 row2correct = False
-colum2correct = False
+column2correct = False
 repeat = True
 
 table()
@@ -36,12 +36,12 @@ while repeat:
         print(player1 + ", which row would you like to place an X in?")
         row1 = input("")
         print("Alright " + player1 + ", and which column will you choose?")
-        colum1 = input("")
+        column1 = input("")
 
         row1int = int(row1)
-        colum1int = int(colum1)
+        column1int = int(column1)
         rowchoice1 = row1int - 1
-        columchoice1 = colum1int - 1
+        columnchoice1 = column1int - 1
 
         #check if possible
         if rowchoice1 < 0 or rowchoice1 > 2:
@@ -50,17 +50,17 @@ while repeat:
         else:
             row1correct = True
 
-        if columchoice1 < 0 or columchoice1 > 2:
+        if columnchoice1 < 0 or columnchoice1 > 2:
             print("Sorry, there is no such position in the game.")
-            colum1correct = False
+            column1correct = False
         else:
-            colum1correct = True
+            column1correct = True
 
 
-        while row1correct and colum1correct:
+        while row1correct and column1correct:
             #check if empty
-            if gameboard[rowchoice1][columchoice1] == " ":
-                gameboard[rowchoice1][columchoice1] = "X"
+            if gameboard[rowchoice1][columnchoice1] == " ":
+                gameboard[rowchoice1][columnchoice1] = "X"
                 turnOf1 = False
             else:
                 print("Sorry, this field is already occupied. Choose a different one!")
@@ -74,10 +74,11 @@ while repeat:
                     turnOf2 = False
                     repeat = False
                     print("Well done, " + player1 + ". You have won the game!")
+                    break
                 else:
                     turnOf2 = True
             row1correct = False
-            colum1correct = False
+            column1correct = False
             turnOf1 = False
 
     #turn of Player 2
@@ -85,12 +86,12 @@ while repeat:
         print(player2 + ", which row would you like to place an O in?")
         row2 = input("")
         print("Alright " + player2 + ", and which column will you choose?")
-        colum2 = input("")
+        column2 = input("")
 
         row2int = int(row2)
-        colum2int = int(colum2)
+        column2int = int(column2)
         rowchoice2 = row2int - 1
-        columchoice2 = colum2int - 1
+        columnchoice2 = column2int - 1
 
          #check if possible
         if rowchoice2 < 0 or rowchoice2 > 2:
@@ -99,18 +100,18 @@ while repeat:
         else:
             row2correct = True
 
-        if columchoice2 < 0 or columchoice2 > 2:
+        if columnchoice2 < 0 or columnchoice2 > 2:
             print("Sorry, there is no such position in the game.")
-            colum2correct = False
+            column2correct = False
         else:
-            colum2correct = True
+            column2correct = True
 
 
-        while row2correct and colum2correct:
+        while row2correct and column2correct:
 
             #check if empty
-            if gameboard[rowchoice2][columchoice2] == " ":
-                gameboard[rowchoice2][columchoice2] = "O"
+            if gameboard[rowchoice2][columnchoice2] == " ":
+                gameboard[rowchoice2][columnchoice2] = "O"
                 turnOf2 = False
             else:
                 print("Sorry, this field is already occupied. Choose a different one!")
@@ -127,5 +128,5 @@ while repeat:
                 else:
                     turnOf1 = True
             row2correct = False
-            colum2correct = False
+            column2correct = False
             turnOf2 = False
