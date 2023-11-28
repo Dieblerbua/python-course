@@ -7,6 +7,7 @@ player = 1
 lineCorrect = False
 columnCorrect = False
 emptySpace = False
+win = False
 gameboard = [[" "," "," "],[" "," "," "],[" "," "," "]]
 currentPlayer = player1
 currentSymbol = "X"
@@ -87,6 +88,12 @@ def possible():
           print("This move has already been made.")
           emptySpace = False
 
+def winConditions():
+    #lines
+    for line in gameboard:
+        if gameboard == [currentSymbol, currentSymbol, currentSymbol]:
+            win = True
+            print("Well done, " + currentPlayer + ", you have won the game")
 
 table()
 
@@ -95,9 +102,16 @@ while repeat:
     
     if lineCorrect and columnCorrect and emptySpace == True:
         gameboard[linePos][columnPos] = currentSymbol
+        winConditions()
         turnchanger()
     else: print("Please choose another position for your '" + currentSymbol + "'.")
-        
+    
     table()
+       
+    if win == True:
+        repeat = False
+    
     lineCorrect = False
     columnCorrect = False
+
+    #TODO don´t allow letters
