@@ -6,25 +6,28 @@ repeat = True
 player = 1
 lineCorrect = False
 columnCorrect = False
+emptySpace = False
 gameboard = [[" "," "," "],[" "," "," "],[" "," "," "]]
 currentPlayer = player1
 currentSymbol = "X"
 
 
 def table():
-        print("----------")
-        for line in gameboard:
-            print("|", end = "")
-            for position in line:
-                print(position, "|", end = "")
-            print("")
-            print("----------")
+    print("----------")
+    for line in gameboard:
+        print("|", end = "")
+        for position in line:
+            print(position, "|", end = "")
         print("")
+        print("----------")
+    print("")
 
 def turnchanger():
     global player
     global currentSymbol
     global currentPlayer
+    global player1
+    global player2
 
     if player == 1:
         player = 2
@@ -46,9 +49,10 @@ def turn():
     global columnCorrect
     global linePos
     global columnPos
+    global emptySpace
 
 #choose line
-    print("Alright, " + currentPlayer + ", in which line would you like to make your first move?")
+    print(currentPlayer + ", in which line would you like to make your first move?")
     lineChoice = input()
     lineInt = int(lineChoice)
     linePos = lineInt - 1
@@ -70,16 +74,30 @@ def turn():
             return
     else: columnCorrect = True
 
+    possible()
+
+def possible():
+     global linePos
+     global columnPos
+     global emptySpace
+
+     if gameboard[linePos][columnPos] == " ":
+          emptySpace = True
+     else:
+          print("This move has already been made.")
+          emptySpace = False
+
 
 table()
+
 while repeat:
     turn()
-    if lineCorrect and columnCorrect == True:      
-       gameboard[linePos][columnPos] = currentSymbol
-    table()
-    if lineCorrect and columnCorrect == True:
+    
+    if lineCorrect and columnCorrect and emptySpace == True:
+        gameboard[linePos][columnPos] = currentSymbol
         turnchanger()
     else: print("Please choose another position for your '" + currentSymbol + "'.")
+        
+    table()
     lineCorrect = False
     columnCorrect = False
-    
