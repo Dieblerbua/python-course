@@ -105,9 +105,9 @@ def winConditions():
         win = True
     
     #diagonal
-    if gameboard[0][0] and gameboard [1][1] and gameboard[2][2] == currentSymbol:
+    if gameboard[0][0] == currentSymbol and gameboard[1][1] == currentSymbol and gameboard[2][2] == currentSymbol:
         win = True
-    if gameboard[2][0] and gameboard [1][1] and gameboard[0][2] == currentSymbol:
+    if gameboard[2][0] == currentSymbol and gameboard[1][1] == currentSymbol and gameboard[0][2] == currentSymbol:
             win = True
 
 table()
